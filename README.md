@@ -49,27 +49,26 @@ This project was locally deployed, debugged, and stabilized as part of hands-on 
 - npm
 
 ---
-
 🔹 Install Node.js
 
 Run the following from your home directory:
 
 curl -fsSL https://deb.nodesource.com/setup_18.x | sudo -E bash -
 sudo apt install -y nodejs
+
 node -v
 npm -v
 
 🔹 Frontend Setup
-
-Navigate to the frontend directory and install dependencies:
-
 cd ~/Flightly-An-Air-Booking-Web-App/frontend
 npm install
 npm install @kommunicate/kommunicate-chatbot-plugin
 export NODE_OPTIONS=--openssl-legacy-provider
 npm start
 
+
 Frontend URL
+
 http://localhost:3000
 
 🔹 MongoDB Installation (Local)
@@ -91,30 +90,50 @@ sudo systemctl start mongod
 sudo systemctl enable mongod
 systemctl status mongod
 
+
 MongoDB Connection URI
+
 mongodb://127.0.0.1:27017
 
 🔹 Backend Setup
-
-Navigate to the backend directory and prepare build dependencies:
-
 cd ~/Flightly-An-Air-Booking-Web-App/backend
 sudo apt update
 sudo apt install -y build-essential python3 make g++
 
-
-Clean previous installs and install dependencies:
-
+Install Dependencies
 rm -rf node_modules package-lock.json
 npm install
 npm rebuild bcrypt --build-from-source
 
-
-Install Nodemon globally and start the backend:
-
+Start Backend
 sudo npm install -g nodemon
 nodemon -v
 npm run devStart
 
+
 Backend URL
+
 http://localhost:8080
+
+🔹 MongoDB Configuration (No .env Used)
+
+File: backend/config/keys.js
+
+module.exports = {
+  MongoURI: "mongodb://127.0.0.1:27017/flightapp"
+};
+
+
+Database Name
+
+flightapp
+
+✅ Verification
+Backend Health Check
+curl http://localhost:8080
+
+MongoDB Check
+mongosh
+use flightapp
+show collections
+
