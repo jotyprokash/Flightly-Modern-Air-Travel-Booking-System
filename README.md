@@ -1,111 +1,125 @@
-✈️ Flight Booking Application (MERN Stack)
+# ✈️ Flightly – An Air Booking Web Application
 
-A full-stack Flight Booking web application built using React, Node.js, Express, and MongoDB (local).
-This setup runs entirely on a self-hosted Ubuntu VM without MongoDB Atlas or environment files.
+Flightly is a full-stack air booking web application built with **React, Node.js, Express, and MongoDB**.  
+The project covers real-world booking flows including user authentication, route selection, seat booking, payments, and ticket management.
 
-🧱 Tech Stack
+This project was locally deployed, debugged, and stabilized as part of hands-on R&D and system integration work.
 
-Frontend: React, Axios, Material-UI, Bootstrap
+---
 
-Backend: Node.js, Express, Passport-JWT
+## 🚀 Features
 
-Database: MongoDB (Local)
+- User registration & login (JWT based)
+- Route & seat selection
+- Ticket booking & cancellation
+- Travel history & profile management
+- Payment flow UI
+- Integrated chatbot support (Kommunicate)
+- MongoDB local database (no Atlas dependency)
+- Fully local development setup
 
-Auth: JWT (JSON Web Token)
+---
 
-📁 Project Structure
-Flight-Booking-App/
-├── backend/
-│   ├── app.js
-│   ├── bin/www
-│   ├── routes/
-│   ├── models/
-│   ├── config/keys.js
-│   └── package.json
-└── frontend/
-    ├── src/
-    ├── public/
-    └── package.json
+## 🛠 Tech Stack
 
-🚀 Deployment Guide (Ubuntu)
+**Frontend**
+- React (CRA)
+- Axios
+- Material-UI
+- Bootstrap
 
-1️⃣ Install Node.js (v18)
+**Backend**
+- Node.js
+- Express
+- MongoDB (local)
+- Mongoose
+- JWT Authentication
+- Passport.js
+- bcrypt
 
+---
+
+## ⚙️ Run Locally
+
+### 1️⃣ System Requirements
+
+- Ubuntu (tested on Ubuntu 22.04 / 24.04)
+- Node.js 18.x
+- MongoDB 7.x
+- npm
+
+---
+
+## 🔹 Install Node.js
+
+From home directory:
+
+```bash
 curl -fsSL https://deb.nodesource.com/setup_18.x | sudo -E bash -
 sudo apt install -y nodejs
 node -v
 npm -v
+🔹 Frontend Setup
+cd ~/Flightly-An-Air-Booking-Web-App/frontend
+npm install
+npm install @kommunicate/kommunicate-chatbot-plugin
+export NODE_OPTIONS=--openssl-legacy-provider
+npm start
+Frontend runs at:
 
-2️⃣ Install MongoDB (Local)
-
-Import MongoDB GPG Key
-
+http://localhost:3000
+🔹 MongoDB Installation (Local)
+Import MongoDB GPG key
 curl -fsSL https://pgp.mongodb.com/server-7.0.asc | \
 sudo gpg -o /usr/share/keyrings/mongodb-server-7.0.gpg --dearmor
-
-
-Add MongoDB Repository
-
+Add MongoDB repository
 echo "deb [ signed-by=/usr/share/keyrings/mongodb-server-7.0.gpg ] \
 https://repo.mongodb.org/apt/ubuntu jammy/mongodb-org/7.0 multiverse" | \
 sudo tee /etc/apt/sources.list.d/mongodb-org-7.0.list
-
-
 Install MongoDB
-
 sudo apt update
 sudo apt install -y mongodb-org
-
-
-Start MongoDB
-
+Start & enable MongoDB
 sudo systemctl start mongod
 sudo systemctl enable mongod
+systemctl status mongod
+MongoDB runs at:
 
-
-Verify:
-
-mongosh
-
-3️⃣ Backend Setup
-cd ~/Flight-Booking-App/backend
+mongodb://127.0.0.1:27017
+🔹 Backend Setup
+cd ~/Flightly-An-Air-Booking-Web-App/backend
+sudo apt update
+sudo apt install -y build-essential python3 make g++
+rm -rf node_modules package-lock.json
 npm install
-npm install -g nodemon
+npm rebuild bcrypt --build-from-source
+sudo npm install -g nodemon
+nodemon -v
+npm run devStart
+Backend runs at:
 
-MongoDB Config
-
+http://localhost:8080
+🔹 MongoDB Configuration (No .env used)
 backend/config/keys.js
 
 module.exports = {
   MongoURI: "mongodb://127.0.0.1:27017/flightapp"
 };
+Database used:
 
-Start Backend
-npm run devStart
+flightapp
+✅ Verification
+Backend homepage:
 
+curl http://localhost:8080
+MongoDB check:
 
-Backend runs on:
-
-http://localhost:8080
-
-4️⃣ Frontend Setup
-cd ~/Flight-Booking-App/frontend
-npm install
-export NODE_OPTIONS=--openssl-legacy-provider
-npm start
-
-
-Frontend runs on:
-
-http://localhost:3000
-
-
-🔐 Authentication Flow
-
-Register: POST /register
-
-Login: POST /login
-
-JWT Token returned on login
-
-Protected routes use Passport-JWT
+mongosh
+use flightapp
+show collections
+📁 Project Structure
+Flightly-An-Air-Booking-Web-App/
+├── frontend/
+├── backend/
+├── documentationResources/
+└── README.md
