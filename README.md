@@ -50,76 +50,71 @@ This project was locally deployed, debugged, and stabilized as part of hands-on 
 
 ---
 
-## 🔹 Install Node.js
+🔹 Install Node.js
 
-From home directory:
+Run the following from your home directory:
 
-```bash
 curl -fsSL https://deb.nodesource.com/setup_18.x | sudo -E bash -
 sudo apt install -y nodejs
 node -v
 npm -v
+
 🔹 Frontend Setup
+
+Navigate to the frontend directory and install dependencies:
+
 cd ~/Flightly-An-Air-Booking-Web-App/frontend
 npm install
 npm install @kommunicate/kommunicate-chatbot-plugin
 export NODE_OPTIONS=--openssl-legacy-provider
 npm start
-Frontend runs at:
 
+Frontend URL
 http://localhost:3000
+
 🔹 MongoDB Installation (Local)
-Import MongoDB GPG key
+Import MongoDB GPG Key
 curl -fsSL https://pgp.mongodb.com/server-7.0.asc | \
 sudo gpg -o /usr/share/keyrings/mongodb-server-7.0.gpg --dearmor
-Add MongoDB repository
+
+Add MongoDB Repository
 echo "deb [ signed-by=/usr/share/keyrings/mongodb-server-7.0.gpg ] \
 https://repo.mongodb.org/apt/ubuntu jammy/mongodb-org/7.0 multiverse" | \
 sudo tee /etc/apt/sources.list.d/mongodb-org-7.0.list
+
 Install MongoDB
 sudo apt update
 sudo apt install -y mongodb-org
-Start & enable MongoDB
+
+Start & Enable MongoDB
 sudo systemctl start mongod
 sudo systemctl enable mongod
 systemctl status mongod
-MongoDB runs at:
 
+MongoDB Connection URI
 mongodb://127.0.0.1:27017
+
 🔹 Backend Setup
+
+Navigate to the backend directory and prepare build dependencies:
+
 cd ~/Flightly-An-Air-Booking-Web-App/backend
 sudo apt update
 sudo apt install -y build-essential python3 make g++
+
+
+Clean previous installs and install dependencies:
+
 rm -rf node_modules package-lock.json
 npm install
 npm rebuild bcrypt --build-from-source
+
+
+Install Nodemon globally and start the backend:
+
 sudo npm install -g nodemon
 nodemon -v
 npm run devStart
-Backend runs at:
 
+Backend URL
 http://localhost:8080
-🔹 MongoDB Configuration (No .env used)
-backend/config/keys.js
-
-module.exports = {
-  MongoURI: "mongodb://127.0.0.1:27017/flightapp"
-};
-Database used:
-
-flightapp
-✅ Verification
-Backend homepage:
-
-curl http://localhost:8080
-MongoDB check:
-
-mongosh
-use flightapp
-show collections
-📁 Project Structure
-Flightly-An-Air-Booking-Web-App/
-├── frontend/
-├── backend/
-├── documentationResources/
-└── README.md
