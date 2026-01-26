@@ -28,7 +28,9 @@ Flight-Booking-App/
     └── package.json
 
 🚀 Deployment Guide (Ubuntu)
+
 1️⃣ Install Node.js (v18)
+
 curl -fsSL https://deb.nodesource.com/setup_18.x | sudo -E bash -
 sudo apt install -y nodejs
 node -v
