@@ -1,165 +1,66 @@
-# MERN-Flight-Booking-Application
 
+# Project Title
 
-A complete flight booking application made using MERN Stack (MongoDB, Express js, React js, Node js)
+Flightly is a full-stack air-booking web application that simulates a    real-world  airline reservation system. It allows users to register, authenticate, search routes, book seats, manage trips, and handle cancellations through a modern, responsive interface.
 
-The Flight ticket booking app is composed of the following Features:
+Built with React, Node.js, Express, and MongoDB, Flightly focuses on practical system design, secure authentication, and end-to-end booking workflows, making it ideal for demonstrating full-stack engineering and backend integration skills.
+## Run Locally
 
-### Front-End
+From home directory
 
-* Sign-In & Sign-Up Pages.
+```bash
+  curl -fsSL https://deb.nodesource.com/setup_18.x | sudo -E bash -
+  sudo apt install -y nodejs
+  node -v
+  npm -v
+```
+Clone the project
 
-* Uses Token based system, so only registered users can access the website  passport js.
+```bash
+  git clone https://github.com/jotyprokash/Flightly-An-Air-Booking-Web-App.git
+```
+Go to the FE project directory
 
-* Password hashing using passport js.
+```bash
+ cd ~/Flightly-An-Air-Booking-Web-App/frontend
+ npm install
+ npm install @kommunicate/kommunicate-chatbot-plugin
+ export NODE_OPTIONS=--openssl-legacy-provider
+ npm start
+```
 
-* Has a profile page, which will display all information about the signed in user.
+MongoDB Installation
 
-* List of cities for users to choose from (starting city & destination city). 
+```bash
+  curl -fsSL https://pgp.mongodb.com/server-7.0.asc | \
+  sudo gpg -o /usr/share/keyrings/mongodb-server-7.0.gpg --dearmor
 
-* Getting list of flight's of different airlines with various details.
+  echo "deb [ signed-by=/usr/share/keyrings/mongodb-server-7.0.gpg ] \
+  https://repo.mongodb.org/apt/ubuntu jammy/mongodb-org/7.0 multiverse" | \
+  sudo tee /etc/apt/sources.list.d/mongodb-org-7.0.list
 
-* Seat selection page has a very user friendly environment, which also generates dynamic forms for storing data's of passengers.
+  sudo apt update
+  sudo apt install -y mongodb-org
 
-* Has a Confirmation page, which gets a debit card data using react-credit-cards. This version of the application does not include handling the payment process. 
+  sudo systemctl start mongod
+  sudo systemctl enable mongod
 
-* Final page has a boarding pass displaying component, it displays all passenger data and also generates a random number as a transaction ID.
+  systemctl status mongod
 
-* Ticket Cancellation page will cancel the ticket which was booked.
 
-* Also has an integrated ai chatbot
+```
 
-### Back-End
+Go to the BE project directory
 
-* Uses Express js based application for the backend process.
+```bash
+  cd ~//Flightly-An-Air-Booking-Web-App/backend
+  sudo apt update
+  sudo apt install -y build-essential python3 make g++
+  rm -rf node_modules package-lock.json
+  npm install
+  npm rebuild bcrypt --build-from-source
+  sudo npm install -g nodemon
+  nodemon -v
+  npm run devStart
+```
 
-* Uses MongoDB atlas for storing the collections.
-
-* Uses passport js for authenticating user and token based system.
-
-* Uses passport js for hashing the password before sending the data to the cloud.
-
-* This version does not support dynamic seat data being stored from cloud.
-
-
-This project also demonstrates:
-
-* a typcial React project layout structure
-
-**Screenshots:**
-Landing Page:
-
-![](documentationResources/homepage.png)
-
-Signing In Page:
-
-![](documentationResources/login.png)
-✈️ Flight Booking Application (MERN Stack)
-
-A full-stack Flight Booking web application built using React, Node.js, Express, and MongoDB (local).
-This setup runs entirely on a self-hosted Ubuntu VM without MongoDB Atlas or environment files.
-
-🧱 Tech Stack
-
-Frontend: React, Axios, Material-UI, Bootstrap
-
-Backend: Node.js, Express, Passport-JWT
-
-Database: MongoDB (Local)
-
-Auth: JWT (JSON Web Token)
-
-📁 Project Structure
-Flight-Booking-App/
-├── backend/
-│   ├── app.js
-│   ├── bin/www
-│   ├── routes/
-│   ├── models/
-│   ├── config/keys.js
-│   └── package.json
-└── frontend/
-    ├── src/
-    ├── public/
-    └── package.json
-
-🚀 Deployment Guide (Ubuntu)
-1️⃣ Install Node.js (v18)
-curl -fsSL https://deb.nodesource.com/setup_18.x | sudo -E bash -
-sudo apt install -y nodejs
-node -v
-npm -v
-
-2️⃣ Install MongoDB (Local)
-
-Import MongoDB GPG Key
-
-curl -fsSL https://pgp.mongodb.com/server-7.0.asc | \
-sudo gpg -o /usr/share/keyrings/mongodb-server-7.0.gpg --dearmor
-
-
-Add MongoDB Repository
-
-echo "deb [ signed-by=/usr/share/keyrings/mongodb-server-7.0.gpg ] \
-https://repo.mongodb.org/apt/ubuntu jammy/mongodb-org/7.0 multiverse" | \
-sudo tee /etc/apt/sources.list.d/mongodb-org-7.0.list
-
-
-Install MongoDB
-
-sudo apt update
-sudo apt install -y mongodb-org
-
-
-Start MongoDB
-
-sudo systemctl start mongod
-sudo systemctl enable mongod
-
-
-Verify:
-
-mongosh
-
-3️⃣ Backend Setup
-cd ~/Flight-Booking-App/backend
-npm install
-npm install -g nodemon
-
-MongoDB Config
-
-backend/config/keys.js
-
-module.exports = {
-  MongoURI: "mongodb://127.0.0.1:27017/flightapp"
-};
-
-Start Backend
-npm run devStart
-
-
-Backend runs on:
-
-http://localhost:8080
-
-4️⃣ Frontend Setup
-cd ~/Flight-Booking-App/frontend
-npm install
-export NODE_OPTIONS=--openssl-legacy-provider
-npm start
-
-
-Frontend runs on:
-
-http://localhost:3000
-
-
-🔐 Authentication Flow
-
-Register: POST /register
-
-Login: POST /login
-
-JWT Token returned on login
-
-Protected routes use Passport-JWT
