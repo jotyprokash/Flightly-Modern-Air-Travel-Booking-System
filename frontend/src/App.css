@@ -1,34 +1,42 @@
 body {
-    background: url('./status.jpg');
+    margin: 0;
+    min-height: 100vh;
+
+    background-image: url('./flightly-bg.png');
     background-repeat: no-repeat;
-    background-position: center center;
+    background-position: top center;
     background-attachment: fixed;
-    background-size: cover;
-    height: 100%;
-    width: 100%;
+
+    /* KEY CHANGE */
+    background-size: 100% auto;
+
+    /* fallback color */
+    background-color: #0b1d2a;
 }
 
-.page{
-    position: absolute;
+/* keeps routed pages aligned */
+.page {
+    position: relative;
+    min-height: 100vh;
 }
 
-
+/* animations unchanged */
 .fade-appear, .fade-enter {
     opacity: 0;
     z-index: 1;
 }
 
-.fade-appear-active, .fade-enter.fade-enter-active {
+.fade-appear-active,
+.fade-enter.fade-enter-active {
     opacity: 1;
     transition: opacity 300ms linear 150ms;
 }
 
-.fade-exit{
+.fade-exit {
     opacity: 1;
 }
 
-.fade-exit.fade-exit-active{
-    opacity: 1;
+.fade-exit.fade-exit-active {
+    opacity: 0;
     transition: opacity 150ms linear;
-
 }
