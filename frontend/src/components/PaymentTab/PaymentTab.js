@@ -188,7 +188,7 @@ export default class App extends React.Component {
                     </div>{' '}
                 </div>{' '}
                 <div className='columnTwo' >
-                    <h3 > Swadeshi Airlines </h3>{' '}
+                    <h3 > Flightly </h3>{' '}
                     <div>
                         <p> BOOKING DETAILS </p>{' '}
                         <div className='row' >
