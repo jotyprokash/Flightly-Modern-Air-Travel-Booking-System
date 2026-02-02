@@ -67,9 +67,9 @@ export default class App extends React.Component {
                         <br/>
                         <center>
                             <br/>
-                        <p class="te">EMAIL: swadesiairlines@gmail.com</p>
-                    <p class="te">CONTACT NUMBER: 9677934637</p>
-                    <p class="te">ADDRESS:91-Z/19,DELHI,110001 </p>
+                        <p class="te">EMAIL: jotyprokash61@gmail.com</p>
+                    <p class="te">CONTACT : 01618-411383</p>
+                    <p class="te">ADDRESS:Gulshan, Dhaka </p>
                     </center>
                         </center>
                         <br/><br/>
