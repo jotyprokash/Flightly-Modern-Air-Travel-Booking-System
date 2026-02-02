@@ -17,7 +17,7 @@ export default class App extends React.Component {
 
                 <div className="column3" >
                     <div className="seatInfo">
-                    <p class="new">SWADESHI AIRLINES</p>
+                    <p class="new">Flightly</p>
                     <center>
                     <div className="cen">
                         <form >
