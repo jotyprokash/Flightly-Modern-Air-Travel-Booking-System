@@ -1,8 +1,10 @@
+import { API_BASE } from "../../config";
 import axios from 'axios';
 
 export function registerUser(newUserDetails) {
   return axios.post(
-    'http://localhost:8080/register', // ✅ BROWSER-RESOLVABLE
+    `${API_BASE}/register`,  // ✅ BROWSER-RESOLVABLE
+    
     newUserDetails,
     {
       headers: {
